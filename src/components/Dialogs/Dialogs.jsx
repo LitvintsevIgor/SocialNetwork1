@@ -34,7 +34,12 @@ const Dialogs = (props) => {
         <OneMessage id={message.id} message={message.message} />
     ));
 
+    let messageElement = React.createRef();
 
+    let sentMessage = () => {
+        let message = messageElement.current.value;
+        alert(message);
+    };
 
     return (
         <div className={s.dialogs}>
@@ -43,7 +48,13 @@ const Dialogs = (props) => {
             </div>
             <div className={s.messages}>
                 {messagesElements}
+                <textarea ref={messageElement}></textarea>
+                <div>
+                    <button onClick={sentMessage}>Отправить</button>
+                </div>
+
             </div>
+
         </div>
     );
 };

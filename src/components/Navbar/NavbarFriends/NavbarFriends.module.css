@@ -1,0 +1,16 @@
+.friendsPhoto {
+    background-color: white;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.navbarFriendsItems {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.friendsCard{
+    margin-right: 10px;
+}

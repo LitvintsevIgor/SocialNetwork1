@@ -21,16 +21,19 @@
 //     {id: 4, message: "Что расскажешь?"}
 // ];
 
+import {rerenderEntireTree} from "../../render";
+
 let state = {
 
     profilePage: {
         postData: [
             {id: 1, postMessage: "Hi, how are you?", likes: 5},
             {id: 2, postMessage: "It is my post", likes: 9},
-            {id: 2, postMessage: "It is my post", likes: 9},
-            {id: 2, postMessage: "It is my post", likes: 9},
-            {id: 2, postMessage: "It is my post", likes: 9}
-        ]
+            {id: 3, postMessage: "It is my post", likes: 9},
+            {id: 4, postMessage: "It is my post", likes: 9},
+            {id: 5, postMessage: "It is my post", likes: 9}
+        ],
+        newPostText: 'it-kamasutra.com'
     },
     dialogsPage: {
         dialogsData: [
@@ -48,5 +51,23 @@ let state = {
         ]
     }
 }
+
+
+export let addPost = () => {
+    let newPost = {
+        id: 6,
+        postMessage: state.profilePage.newPostText,
+        likes: 0
+    };
+    state.profilePage.postData.push(newPost);
+    state.profilePage.newPostText = '';
+    rerenderEntireTree(state);
+};
+
+export let updateNewPostText = (newText) => {
+    state.profilePage.newPostText = newText;
+    rerenderEntireTree(state);
+};
+
 
 export default state;
