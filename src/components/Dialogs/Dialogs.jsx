@@ -2,43 +2,33 @@ import React from "react";
 import s from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import OneMessage from "./OneMessage/OneMessage";
-
+import {apdateNewMessageBodyCreator, sendMessageCreator} from "../redux/dialogs-reducer";
 
 
 
 const Dialogs = (props) => {
 
+    let state =props.dialogsPage;
 
-
-    // let dialogsData = [
-    //     {id: 1, name: "Иван"},
-    //     {id: 2, name: "Света"},
-    //     {id: 3, name: "Петр"},
-    //     {id: 4, name: "Антон"},
-    //     {id: 5, name: "Олег"}
-    // ];
-    //
-    // let messagesData = [
-    //     {id: 1, message: "Привет Василий"},
-    //     {id: 2, message: "Хохохо С днем рождения"},
-    //     {id: 3, message: "Как дела?"},
-    //     {id: 4, message: "Что расскажешь?"}
-    // ];
-
-
-    let dialogsElements = props.state.dialogsData.map( dialogs => (
-        <DialogItem id={dialogs.id} name={dialogs.name} />
+    let dialogsElements = state.dialogsData.map(dialogs => (
+        <DialogItem id={dialogs.id} name={dialogs.name}/>
     ));
 
-    let messagesElements = props.state.messagesData.map( message => (
-        <OneMessage id={message.id} message={message.message} />
+    let messagesElements = state.messagesData.map(message => (
+        <OneMessage id={message.id} message={message.message}/>
     ));
+
+    let newMessageBody = state.newMessageBody;
 
     let messageElement = React.createRef();
 
-    let sentMessage = () => {
-        let message = messageElement.current.value;
-        alert(message);
+    let onSendMessageClick = () => {
+        props.sendMessage();
+    };
+
+    let onNewMessageChange = (e) => {
+        let body = e.target.value;
+        props.apdateNewMessageBody(body);
     };
 
     return (
@@ -47,12 +37,15 @@ const Dialogs = (props) => {
                 {dialogsElements}
             </div>
             <div className={s.messages}>
-                {messagesElements}
-                <textarea ref={messageElement}></textarea>
+                <div>{messagesElements}</div>
                 <div>
-                    <button onClick={sentMessage}>Отправить</button>
+                    <div><textarea value={newMessageBody}
+                                   onChange={onNewMessageChange}
+                                   placeholder="Введите свое сообщение"></textarea></div>
+                    <div>
+                        <button onClick={onSendMessageClick}>Отправить</button>
+                    </div>
                 </div>
-
             </div>
 
         </div>
