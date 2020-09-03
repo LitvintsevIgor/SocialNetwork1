@@ -11,6 +11,7 @@ import Settings from "./components/Settings/Settings";
 import {addPost} from "./components/redux/store";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 
 const App = (props) => {
     return (
@@ -19,7 +20,7 @@ const App = (props) => {
             <Navbar/>
             <div className="app_wrapper_content">
                 <Route path="/profile"
-                       render={() => <Profile/>}/>
+                       render={() => <ProfileContainer/>}/>
                 <Route path="/dialogs"
                        render={() => <DialogsContainer/>}/>
                 <Route path="/users"
