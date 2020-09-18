@@ -30,7 +30,7 @@ class UsersContainer extends React.Component {
     onPageChanged = (pageNumber) => {
         this.props.togglePreload(true)
         this.props.setCurrentPage(pageNumber);
-        getUsers(pageNumber, this.props.pageSize).then(data => {
+        usersAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
                 this.props.togglePreload(false);
                 this.props.setUsers(data.items)
             });
