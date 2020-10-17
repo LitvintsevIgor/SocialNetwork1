@@ -1,13 +1,13 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
-    follow, getUsers,
+    follow, followSuccess, getUsers,
     setCurrentPage,
     setTotalUsersCount,
     setUsers,
     toggleFollowingProgress,
     togglePreload,
-    unfollow,
+    unfollow, unfollowSuccess,
 
 } from "../redux/users-reducer";
 import * as axios from "axios";

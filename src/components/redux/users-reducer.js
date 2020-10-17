@@ -84,29 +84,29 @@ export const getUsers = (currentPage, pageSize) =>{
     }
 }
 
-export const follow = (userId) =>{
+export const follow = (userID) =>{
     return (dispatch) => {
-        dispatch(toggleFollowingProgress(true, userId));
-        usersAPI.follow(userId)
+        dispatch(toggleFollowingProgress(true, userID));
+        usersAPI.follow(userID)
             .then(response => {
                 if (response.data.resultCode == 0) {
-                    dispatch(followSuccess(userId));
+                    dispatch(followSuccess(userID));
                 }
-                dispatch(toggleFollowingProgress(false, userId));
+                dispatch(toggleFollowingProgress(false, userID));
 
             });
     }
 }
 
-export const unfollow = (userId) =>{
+export const unfollow = (userID) =>{
     return (dispatch) => {
-        dispatch(toggleFollowingProgress(true, userId));
-        usersAPI.unfollow(userId)
+        dispatch(toggleFollowingProgress(true, userID));
+        usersAPI.unfollow(userID)
             .then(response => {
                 if (response.data.resultCode == 0) {
-                    dispatch(unfollowSuccess(userId));
+                    dispatch(unfollowSuccess(userID));
                 }
-                dispatch(toggleFollowingProgress(false, userId));
+                dispatch(toggleFollowingProgress(false, userID));
 
             });
     }
