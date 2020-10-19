@@ -5,10 +5,13 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import Post from "./MyPosts/Post/Post";
 import {addPost} from "../redux/store";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
+import {Redirect} from "react-router-dom";
 
 
 const Profile = (props) => {
-    debugger;
+
+
+
     return (
         <div>
             <ProfileInfo profile={props.profile}/>
