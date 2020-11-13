@@ -21,7 +21,7 @@ const ProfileInfo = (props) => {
                 <img src={props.profile.photos.large} alt=""/>
                 <div>{props.profile.aboutMe}</div>
                 <div>{props.profile.contacts.instagram}</div>
-                <ProfileStatus status={"Hello my friends"}/>
+                <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
             </div>
         </div>
     );
